@@ -34,15 +34,155 @@ Please refer to [get_started.md](https://github.com/open-mmlab/mmsegmentation/bl
 
 ### Customizing dataset
 
+#### Convert datasets
+
+```python
+tools/convert_datasets/pv.py
+```
+
+Prepare data source in data_src 
+
+pv
+├── image
+│   ├── id_1.tif
+│   ├── id_2.tif
+│   ├── id_3.tif
+│   └── id_4.tif
+└── label
+    ├── id_1.tif
+    ├── id_2.tif
+    ├── id_3.tif
+    └── id_4.tif
+
+**Run:**
+
+```bash
+python Austin.py path/to/data_src/pv -o path/to/data/pv
+```
+
+**Output:**
+
+├── pv
+│   ├── img_dir
+│   │   ├── train
+│   │   ├── val
+├── ann_dir
+│   │   ├── train
+│   │   ├── val
+
+**Note:**
+
+The annotations are images of shape (H, W), the value pixel should fall in range `[0, num_classes - 1]`. You may use `'P'` mode of [pillow](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#palette) to create your annotation image with color. 
+
+**References:**
+
+1. [Prepare datasets](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/dataset_prepare.md#prepare-datasets)
+2. [Customize Datasets](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/tutorials/customize_datasets.md)
+
+#### Configs datasets
+
+```bash
+configs/_base_/datasets/py.py
+```
+
+**Modify:**
+
+```python
+dataset_type = 'PvDataset'
+data_root = '/home/user/Work/mmsegmentation/data/pv'
+# add other options
+```
+
+#### Registry datasets
+
+```bash
+mmseg/datasets/pv.py
+```
+
+**Modify:**
+
+```python
+@DATASETS.register_module()
+class PVDataset(CustomDataset):
+    """Austin dataset.
+
+    In segmentation map annotation for pv, 0 stands for background,
+    which is included in 2 categories. ``reduce_zero_label`` is fixed to False.
+    The ``img_suffix`` is fixed to '.png' and ``seg_map_suffix`` is fixed to
+    '.png'.
+    """
+    CLASSES = ('others', 'building')
+
+    PALETTE = [[255, 255, 255], [0, 255, 0]]
+
+    def __init__(self, **kwargs):
+        super(AustinDataset, self).__init__(
+            img_suffix='.png',
+            seg_map_suffix='.png',
+            reduce_zero_label=False,
+            **kwargs)
+```
+
+**Add in init.py:**
+
+```bash
+mmseg/datasets/__init__.py
+```
+
+**Modify:**
+
+```python
+from .pv import PVDataset
+__all__ = [PVDataset]
+```
+
 
 
 ### Training & Evaluation
 
-Training and evaluation the UperNet with RSP-ResNet-50 backbone on Potsdam dataset:
+---
+
+Training and inference the UperNet with ResNet-18 backbone on Heilbronn PV dataset:
+
+### Configs training
+
+**Create:**
+
+based on upernet_r18_512x512_160k_pv.py
+
+```bash
+/home/user/Work/mmsegmentation/configs/upernet/upernet_r18_512x512_160k_pv.py
+```
+
+**Modify:**
+
+```bash
+_base_ = [
+    '../_base_/models/deeplabv3plus_r50-d8.py',
+    '../_base_/datasets/pv.py', '../_base_/default_runtime.py',
+    '../_base_/schedules/schedule_160k.py'
+]
+model = dict(
+    decode_head=dict(num_classes=2), auxiliary_head=dict(num_classes=2))
+```
+
+**Run:**
+
+```bash
+python tools/train.py ../configs/upernet/upernet_r18_512x512_160k_pv.py --work-dir ../work_dirs/upernet_r18_512x512_160k_pv.py --seed 0
+```
 
 
 
 ### Inference
+
+----
+
+**Run:**
+
+```bash
+python tools/test.py ../configs/upernet/upernet_r18_512x512_160k_pv.py ../work_dirs/upernet_r18_512x512_160k_pv/latest.pth --show-dir ../results/upernet_r18_512x512_160k_pv_results --eval mIoU --out results.pkl
+```
 
 
 
