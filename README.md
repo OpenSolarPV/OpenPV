@@ -70,10 +70,10 @@ Output:
 heilbronn_pv
 ├── img_dir
 │   ├── train
-│   ├── val
+│   └── val
 └── ann_dir
     ├── train
-    ├── val
+    └── val
 ```
 
 Note:
