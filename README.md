@@ -26,3 +26,24 @@ OpenMOB is released under the MIT license. Please refer to [LICENSES](LICENSE) f
 
 ## Project status
 This project is currently under development. We will continuously update this project.
+
+
+
+## Citation
+
+---
+
+If this repo is useful for your research, please consider citation
+
+```
+@article{li2021understanding,
+  title={Understanding rooftop PV panel semantic segmentation of satellite and aerial images for better using machine learning},
+  author={Li, Peiran and Zhang, Haoran and Guo, Zhiling and Lyu, Suxing and Chen, Jinyu and Li, Wenjing and Song, Xuan and Shibasaki, Ryosuke and Yan, Jinyue},
+  journal={Advances in applied energy},
+  volume={4},
+  pages={100057},
+  year={2021},
+  publisher={Elsevier}
+}
+```
+
