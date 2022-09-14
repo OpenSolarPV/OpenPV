@@ -59,7 +59,7 @@ pv
 Run:
 
 ```bash
-python Austin.py path/to/data_src/pv -o path/to/data/pv
+python tools/convert_datasets/pv.py path/to/data_src/pv -o path/to/data/pv
 ```
 
 Output:
@@ -108,19 +108,19 @@ Modify:
 ```python
 @DATASETS.register_module()
 class PVDataset(CustomDataset):
-    """Austin dataset.
+    """PV dataset.
 
     In segmentation map annotation for pv, 0 stands for background,
     which is included in 2 categories. ``reduce_zero_label`` is fixed to False.
     The ``img_suffix`` is fixed to '.png' and ``seg_map_suffix`` is fixed to
     '.png'.
     """
-    CLASSES = ('others', 'building')
+    CLASSES = ('others', 'pv')
 
     PALETTE = [[255, 255, 255], [0, 255, 0]]
 
     def __init__(self, **kwargs):
-        super(AustinDataset, self).__init__(
+        super(PVDataset, self).__init__(
             img_suffix='.png',
             seg_map_suffix='.png',
             reduce_zero_label=False,
