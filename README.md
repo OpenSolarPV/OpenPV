@@ -86,7 +86,7 @@ References:
 #### Configs datasets
 
 ```bash
-configs/_base_/datasets/py.py
+configs/_base_/datasets/pv.py
 ```
 
 Modify:
