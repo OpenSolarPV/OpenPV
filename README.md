@@ -20,7 +20,7 @@ Major features
 
 - **Support of multiple methods out of box**
 
-  The toolbox directly supports popular and contemporary semantic segmentation frameworks, *e.g.* PSPNet, DeepLabV3, PSANet, DeepLabV3+, etc.
+  The toolbox directly supports popular and contemporary semantic segmentation frameworks, *e.g.* GeneNet, PSPNet, DeepLabV3, PSANet, DeepLabV3+, etc.
 
 - **High efficiency**
 
@@ -162,12 +162,15 @@ Modify:
 
 ```bash
 _base_ = [
-    '../_base_/models/deeplabv3plus_r50-d8.py',
-    '../_base_/datasets/heilbronn_pv.py', '../_base_/default_runtime.py',
-    '../_base_/schedules/schedule_160k.py'
+    '../_base_/models/upernet_r50.py',
+    '../_base_/datasets/heilbronn-pv.py', '../_base_/default_runtime.py',
+    '../_base_/schedules/schedule_20k.py'
 ]
 model = dict(
-    decode_head=dict(num_classes=2), auxiliary_head=dict(num_classes=2))
+    pretrained='open-mmlab://resnet18_v1c',
+    backbone=dict(depth=18),
+    decode_head=dict(in_channels=[64, 128, 256, 512], num_classes=2),
+    auxiliary_head=dict(in_channels=256, num_classes=2))
 ```
 
 Run:
@@ -286,7 +289,7 @@ This project is currently under development. We will continuously update this pr
 
 We will add this part later shortly.
 
-Zhiling Guo; Haoran Zhang; Qi Chen; Dou Huang; Qing Yu; Peiran Li; Zhan Zhuang; ...
+Zhiling Guo; Haoran Zhang; Qi Chen; Dou Huang; Qing Yu; Peiran Li; Zhan Zhuang; etc.
 
 ## Citation
 
