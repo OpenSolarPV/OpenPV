@@ -30,20 +30,22 @@ Major features
 
 ### Installation
 
-Please refer to [get_started.md](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/get_started.md#installation) for installation and dataset preparation
+Please refer to [get_started.md](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/get_started.md#installation) for installation and dataset preparation.
 
 ### Customizing dataset
+
+Take Heilbronn PV dataset for instance.
 
 #### Convert datasets
 
 ```python
-tools/convert_datasets/pv.py
+tools/convert_datasets/heilbronn_pv.py
 ```
 
 Prepare data source in data_src 
 
 ```
-pv
+heilbronn_pv
 ├── image
 │   ├── id_1.tif
 │   ├── id_2.tif
@@ -59,19 +61,19 @@ pv
 Run:
 
 ```bash
-python tools/convert_datasets/pv.py path/to/data_src/pv -o path/to/data/pv
+python tools/convert_datasets/heilbronn_pv.py path/to/data_src/heilbronn_pv -o path/to/data/heilbronn_pv
 ```
 
 Output:
 
 ```
-├── pv
-│   ├── img_dir
-│   │   ├── train
-│   │   ├── val
-├── ann_dir
-│   │   ├── train
-│   │   ├── val
+heilbronn_pv
+├── img_dir
+│   ├── train
+│   ├── val
+└── ann_dir
+    ├── train
+    ├── val
 ```
 
 Note:
@@ -86,29 +88,29 @@ References:
 #### Configs datasets
 
 ```bash
-configs/_base_/datasets/pv.py
+configs/_base_/datasets/heilbronn_pv.py
 ```
 
 Modify:
 
 ```python
-dataset_type = 'PvDataset'
-data_root = '/home/user/Work/mmsegmentation/data/pv'
+dataset_type = 'HeilbronnPVDataset'
+data_root = '/home/user/Work/mmsegmentation/data/heilbronn_pv'
 # add other options
 ```
 
 #### Registry datasets
 
 ```bash
-mmseg/datasets/pv.py
+mmseg/datasets/heilbronn_pv.py
 ```
 
 Modify:
 
 ```python
 @DATASETS.register_module()
-class PVDataset(CustomDataset):
-    """PV dataset.
+class HeilbronnPVDataset(CustomDataset):
+    """Heilbronn PV dataset.
 
     In segmentation map annotation for pv, 0 stands for background,
     which is included in 2 categories. ``reduce_zero_label`` is fixed to False.
@@ -120,7 +122,7 @@ class PVDataset(CustomDataset):
     PALETTE = [[255, 255, 255], [0, 255, 0]]
 
     def __init__(self, **kwargs):
-        super(PVDataset, self).__init__(
+        super(HeilbronnPVDataset, self).__init__(
             img_suffix='.png',
             seg_map_suffix='.png',
             reduce_zero_label=False,
@@ -136,8 +138,8 @@ mmseg/datasets/__init__.py
 Modify:
 
 ```python
-from .pv import PVDataset
-__all__ = [PVDataset]
+from .heilbronn_pv import HeilbronnPVDataset
+__all__ = [HeilbronnPVDataset]
 ```
 
 
@@ -150,10 +152,10 @@ Training and inference the UperNet with ResNet-18 backbone on Heilbronn PV datas
 
 Create:
 
-based on upernet_r18_512x512_160k_pv.py
+based on upernet_r18_512x512_160k_heilbronn_pv.py
 
 ```bash
-/home/user/Work/mmsegmentation/configs/upernet/upernet_r18_512x512_160k_pv.py
+/home/user/Work/mmsegmentation/configs/upernet/upernet_r18_512x512_160k_heilbronn_pv.py
 ```
 
 Modify:
@@ -161,7 +163,7 @@ Modify:
 ```bash
 _base_ = [
     '../_base_/models/deeplabv3plus_r50-d8.py',
-    '../_base_/datasets/pv.py', '../_base_/default_runtime.py',
+    '../_base_/datasets/heilbronn_pv.py', '../_base_/default_runtime.py',
     '../_base_/schedules/schedule_160k.py'
 ]
 model = dict(
@@ -171,7 +173,7 @@ model = dict(
 Run:
 
 ```bash
-python tools/train.py ../configs/upernet/upernet_r18_512x512_160k_pv.py --work-dir ../work_dirs/upernet_r18_512x512_160k_pv.py --seed 0
+python tools/train.py ../configs/upernet/upernet_r18_512x512_160k_heilbronn_pv.py --work-dir ../work_dirs/upernet_r18_512x512_160k_heilbronn_pv.py --seed 0
 ```
 
 
@@ -181,7 +183,7 @@ python tools/train.py ../configs/upernet/upernet_r18_512x512_160k_pv.py --work-d
 Run:
 
 ```bash
-python tools/test.py ../configs/upernet/upernet_r18_512x512_160k_pv.py ../work_dirs/upernet_r18_512x512_160k_pv/latest.pth --show-dir ../results/upernet_r18_512x512_160k_pv_results --eval mIoU --out results.pkl
+python tools/test.py ../configs/upernet/upernet_r18_512x512_160k_heilbronn_pv.py ../work_dirs/upernet_r18_512x512_160k_heilbronn_pv/latest.pth --show-dir ../results/upernet_r18_512x512_160k_heilbronn_pv_results --eval mIoU --out results.pkl
 ```
 
 
@@ -270,8 +272,6 @@ Results and models are available in the model zoo.
 
 
 
-
-
 ## Project status
 
 This project is currently under development. We will continuously update this project.
@@ -286,7 +286,7 @@ This project is currently under development. We will continuously update this pr
 
 We will add this part later shortly.
 
-Zhiling Guo; Haoran Zhang; Qi Chen; Peiran Li; Zhan Zhuang; ...
+Zhiling Guo; Haoran Zhang; Qi Chen; Dou Huang; Qing Yu; Peiran Li; Zhan Zhuang; ...
 
 ## Citation
 
