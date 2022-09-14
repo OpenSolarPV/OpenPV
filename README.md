@@ -42,6 +42,7 @@ tools/convert_datasets/pv.py
 
 Prepare data source in data_src 
 
+```
 pv
 ├── image
 │   ├── id_1.tif
@@ -53,15 +54,17 @@ pv
     ├── id_2.tif
     ├── id_3.tif
     └── id_4.tif
+```
 
-**Run:**
+Run:
 
 ```bash
 python Austin.py path/to/data_src/pv -o path/to/data/pv
 ```
 
-**Output:**
+Output:
 
+```
 ├── pv
 │   ├── img_dir
 │   │   ├── train
@@ -69,12 +72,13 @@ python Austin.py path/to/data_src/pv -o path/to/data/pv
 ├── ann_dir
 │   │   ├── train
 │   │   ├── val
+```
 
-**Note:**
+Note:
 
 The annotations are images of shape (H, W), the value pixel should fall in range `[0, num_classes - 1]`. You may use `'P'` mode of [pillow](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#palette) to create your annotation image with color. 
 
-**References:**
+References:
 
 1. [Prepare datasets](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/dataset_prepare.md#prepare-datasets)
 2. [Customize Datasets](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/tutorials/customize_datasets.md)
@@ -85,7 +89,7 @@ The annotations are images of shape (H, W), the value pixel should fall in range
 configs/_base_/datasets/py.py
 ```
 
-**Modify:**
+Modify:
 
 ```python
 dataset_type = 'PvDataset'
@@ -99,7 +103,7 @@ data_root = '/home/user/Work/mmsegmentation/data/pv'
 mmseg/datasets/pv.py
 ```
 
-**Modify:**
+Modify:
 
 ```python
 @DATASETS.register_module()
@@ -123,13 +127,13 @@ class PVDataset(CustomDataset):
             **kwargs)
 ```
 
-**Add in init.py:**
+Add in init.py:
 
 ```bash
 mmseg/datasets/__init__.py
 ```
 
-**Modify:**
+Modify:
 
 ```python
 from .pv import PVDataset
@@ -140,13 +144,11 @@ __all__ = [PVDataset]
 
 ### Training & Evaluation
 
----
-
 Training and inference the UperNet with ResNet-18 backbone on Heilbronn PV dataset:
 
-### Configs training
+#### Configs training
 
-**Create:**
+Create:
 
 based on upernet_r18_512x512_160k_pv.py
 
@@ -154,7 +156,7 @@ based on upernet_r18_512x512_160k_pv.py
 /home/user/Work/mmsegmentation/configs/upernet/upernet_r18_512x512_160k_pv.py
 ```
 
-**Modify:**
+Modify:
 
 ```bash
 _base_ = [
@@ -166,7 +168,7 @@ model = dict(
     decode_head=dict(num_classes=2), auxiliary_head=dict(num_classes=2))
 ```
 
-**Run:**
+Run:
 
 ```bash
 python tools/train.py ../configs/upernet/upernet_r18_512x512_160k_pv.py --work-dir ../work_dirs/upernet_r18_512x512_160k_pv.py --seed 0
@@ -176,9 +178,7 @@ python tools/train.py ../configs/upernet/upernet_r18_512x512_160k_pv.py --work-d
 
 ### Inference
 
-----
-
-**Run:**
+Run:
 
 ```bash
 python tools/test.py ../configs/upernet/upernet_r18_512x512_160k_pv.py ../work_dirs/upernet_r18_512x512_160k_pv/latest.pth --show-dir ../results/upernet_r18_512x512_160k_pv_results --eval mIoU --out results.pkl
