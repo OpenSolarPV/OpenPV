@@ -87,7 +87,9 @@ This project is currently under development. We will continuously update this pr
 
 ### To Do
 
-
+- [ ] Learning to solve hard data unbalanced problems
+- [ ] Transfer learning based methods
+- [ ] weak-supervised learning based methods
 
 ## Authors and acknowledgment
 
@@ -111,13 +113,13 @@ If this repo is useful for your research, please consider citation
 }
 ```
 
-
-
 ## References
 
 [mmsegmentation](https://github.com/open-mmlab/mmsegmentation)
 
+## Statement
 
+Currently, this project is for research purpose only. For any other questions please contact guozhilingcc at u-tokyo.ac.jp
 
 ## License
 
