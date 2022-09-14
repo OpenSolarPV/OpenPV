@@ -36,17 +36,22 @@ Supported methods:
 
 Supported datasets:
 
-- [x] Heilbronn
+- [x] Heilbronn, Germany
+
+- pv polygons: 5442
+- building polygons: 38737
 
 ![openpv](/features/dataset_Heilbronn.jpg)
 
+- [x] Jiaxing, China
+
+- pv polygons: 5755
+
+![openpv](/features/dataset_Jiaxing.png)
 
 
-## Authors and acknowledgment
 
-We will add this part later shortly. <br />
-Haoran Zhang: ... <br />
-Dou Huang: <br />
+
 
 
 
@@ -58,7 +63,16 @@ This project is currently under development. We will continuously update this pr
 
 
 
+## Authors and acknowledgment
 
+We will add this part later shortly.
+
+Zhiling Guo
+Haoran Zhang
+Qi Chen
+Peiran Li
+Zhan Zhuang
+...
 
 ## Citation
 
@@ -75,6 +89,8 @@ If this repo is useful for your research, please consider citation
   publisher={Elsevier}
 }
 ```
+
+
 
 ## References
 
