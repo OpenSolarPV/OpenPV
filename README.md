@@ -6,7 +6,7 @@
 
 OpenPV is an open source toolbox for solar photovoltaics semantic segmentation.
 
-![openpv](features/teaser.png)
+![teaser](features/teaser.png)
 
 Major features
 
@@ -63,19 +63,19 @@ Supported datasets:
 * pv polygons: 5442
 * building polygons: 38737
 
-![openpv](features/dataset_Heilbronn.jpg)
+![Heilbronn](features/dataset_Heilbronn.jpg)
 
 - [x] Jiaxing, China
 
 * pv polygons: 5755
 
-![openpv](features/dataset_Jiaxing.png)
+![Jiaxing](features/dataset_Jiaxing.png)
 
 - [x] Lanzhou, China
 
 * pv polygons: Under development
 
-![openpv](features/dataset_Lanzhou.png)
+![Lanzhou](features/dataset_Lanzhou.png)
 
 
 
