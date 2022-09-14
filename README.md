@@ -212,6 +212,10 @@ Results and models are available in the model zoo.
 
 ### Supported methods:
 
+- [x] GenePV
+
+![genepv](features/genepv.png)
+
 - [x] [FCN (CVPR'2015/TPAMI'2017)](configs/fcn)
 - [x] [ERFNet (T-ITS'2017)](configs/erfnet)
 - [x] [UNet (MICCAI'2016/Nat. Methods'2019)](configs/unet)
@@ -248,9 +252,6 @@ Results and models are available in the model zoo.
 - [x] [K-Net (NeurIPS'2021)](configs/knet)
 - [x] [Segmenter (ICCV'2021)](configs/segmenter)
 - [x] [SegFormer (NeurIPS'2021)](configs/segformer)
-- [x] GenePV
-
-![genepv](features/genepv.png)
 
 ### Supported datasets:
 
@@ -318,3 +319,9 @@ Currently, this project is for research purpose only. For any other questions pl
 ## License
 
 OpenPV is released under the MIT license. Please refer to [LICENSES](LICENSE) for the careful check.
+
+## Projects in OpenLab
+
+* **[OpenPV](https://github.com/OpenSolarPV/OpenPV)**: an open source toolbox for solar photovoltaics semantic segmentation.
+* **[OpenMob](https://github.com/openmob/openmob)**: an open source toolbox for urban mobility.
+
