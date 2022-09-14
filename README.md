@@ -1,30 +1,50 @@
 # Open Photovoltaics Toolkit(OpenPV)
 
-![openpv](/features/openpv.jpg)
+![openpv](features/openpv.jpg)
 
 ## Introduction
 
 OpenPV is an open source toolbox for solar photovoltaics semantic segmentation.
 
+![openpv](features/teaser.png)
 
+Major features
 
+- **Unified Benchmark**
 
+  We provide a unified benchmark toolbox for various semantic segmentation methods.
 
+- **Modular Design**
 
+  We decompose the semantic segmentation framework into different components and one can easily construct a customized semantic segmentation framework by combining different modules.
 
+- **Support of multiple methods out of box**
 
+  The toolbox directly supports popular and contemporary semantic segmentation frameworks, *e.g.* PSPNet, DeepLabV3, PSANet, DeepLabV3+, etc.
 
-This project contains several preprocessing tools built by python:
+- **High efficiency**
 
-* Building life pattern tree from raw GPS trajectory data.
-* Preprocessing tools are used for the generation model of the "pseudo life pattern." 
-* Essential preprocessing tools for converting raw GPS data to grid-based data format.
-* Pseudo life pattern to the spatial sequence of trips.
-* Map-matching as post-processing of GPS trajectory.
-
+  The training speed is faster than or comparable to other codebases.
 
 ## Usage
-Please refer to the [requirements.txt](requirements.txt) for the necessary python library.
+
+### Installation
+
+Please refer to [get_started.md](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/get_started.md#installation) for installation and dataset preparation
+
+### Customizing dataset
+
+
+
+### Training & Evaluation
+
+Training and evaluation the UperNet with RSP-ResNet-50 backbone on Potsdam dataset:
+
+
+
+### Inference
+
+
 
 ## Benchmark and model zoo
 
@@ -34,22 +54,28 @@ Supported backbones:
 
 Supported methods:
 
+
+
 Supported datasets:
 
 - [x] Heilbronn, Germany
 
-- pv polygons: 5442
-- building polygons: 38737
+* pv polygons: 5442
+* building polygons: 38737
 
-![openpv](/features/dataset_Heilbronn.jpg)
+![openpv](features/dataset_Heilbronn.jpg)
 
 - [x] Jiaxing, China
 
-- pv polygons: 5755
+* pv polygons: 5755
 
-![openpv](/features/dataset_Jiaxing.png)
+![openpv](features/dataset_Jiaxing.png)
 
+- [x] Lanzhou, China
 
+* pv polygons: Under development
+
+![openpv](features/dataset_Lanzhou.png)
 
 
 
@@ -67,12 +93,7 @@ This project is currently under development. We will continuously update this pr
 
 We will add this part later shortly.
 
-Zhiling Guo
-Haoran Zhang
-Qi Chen
-Peiran Li
-Zhan Zhuang
-...
+Zhiling Guo; Haoran Zhang; Qi Chen; Peiran Li; Zhan Zhuang; ...
 
 ## Citation
 
