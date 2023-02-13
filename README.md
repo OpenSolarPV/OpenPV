@@ -24,7 +24,7 @@ Major features
 
 - **High efficiency**
 
-  The training speed is faster than or comparable to other codebases. dsadsad
+  The training speed is faster than or comparable to other codebases.
 
 ## Usage
 
