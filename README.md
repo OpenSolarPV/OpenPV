@@ -290,7 +290,7 @@ This project is currently under development. We will continuously update this pr
 
 We will add this part later shortly.
 
-Zhiling Guo; Haoran Zhang; Qi Chen; Dou Huang; Qing Yu; Peiran Li; Zhan Zhuang; etc.
+[Zhiling Guo](https://github.com/Chokurei); Haoran Zhang; [Qi Chen](https://daoqiqi.github.io/); Dou Huang; Qing Yu; Peiran Li; Zhan Zhuang; etc.
 
 ## Citation
 
