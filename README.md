@@ -306,6 +306,16 @@ If this repo is useful for your research, please consider citation
   year={2021},
   publisher={Elsevier}
 }
+
+@article{chen2023remote,
+  title={Remote sensing of photovoltaic scenarios: Techniques, applications and future directions},
+  author={Chen, Qi and Li, Xinyuan and Zhang, Zhengjia and Zhou, Chao and Guo, Zhiling and Liu, Zhengguang and Zhang, Haoran},
+  journal={Applied Energy},
+  volume={333},
+  pages={120579},
+  year={2023},
+  publisher={Elsevier}
+}
 ```
 
 ## References
